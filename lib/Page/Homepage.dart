@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:seven_wonders/Page/Screen.dart';
+import '../mocks/mocks_data.dart';
+import '../models/location.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,6 +10,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final Location china = MockDataChina.FetchAny();
+  final Location jordan = MockDataJordan.FetchAny();
+  final Location brazil = MockDataBrazil.FetchAny();
+  final Location peru = MockDataPeru.FetchAny();
+  final Location mexico = MockDataMexico.FetchAny();
+  final Location italy = MockDataItaly.FetchAny();
+  final Location india = MockDataIndia.FetchAny();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +37,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
@@ -41,10 +51,66 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              title: Text('Great Wall of China (China)'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => Screen(location: china)));
+              },
+            ),
+            ListTile(
+              title: Text('Petra (Jordan)'),
+              onTap: () {
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => Screen(location: jordan)));
+              },
+            ),
+            ListTile(
+              title: Text('Christ the Redeemer (Brazil)'),
+              onTap: () {
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => Screen(location: brazil)));
+              },
+            ),
+            ListTile(
+              title: Text('Machu Picchu (Peru)'),
+              onTap: () {
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => Screen(location: peru)));
+              },
+            ),
+            ListTile(
+              title: Text('Chichen Itza (Mexico)'),
+              onTap: () {
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => Screen(location: mexico)));
+              },
+            ),
+            ListTile(
+              title: Text('Roman Colosseum (Italy)'),
+              onTap: () {
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => Screen(location: italy)));
+              },
+            ),
+            ListTile(
+              title: Text('Taj Mahal (India)'),
+              onTap: () {
+                Navigator.push(
+                    (context),
+                    MaterialPageRoute(
+                        builder: (context) => Screen(location: india)));
               },
             ),
             ListTile(
@@ -63,7 +129,29 @@ class _HomePageState extends State<HomePage> {
 }
 
 Widget HomeSheet() {
-  return Center(
-    child: Text('Well Come'),
+  return ListView(
+    children: <Widget>[
+      ListTile(
+        title: Image.asset('assets/01.jpg'),
+      ),
+      ListTile(
+        title: Image.asset('assets/01.jpg'),
+      ),
+      ListTile(
+        title: Image.asset('assets/01.jpg'),
+      ),
+      ListTile(
+        title: Image.asset('assets/01.jpg'),
+      ),
+      ListTile(
+        title: Image.asset('assets/01.jpg'),
+      ),
+      ListTile(
+        title: Image.asset('assets/01.jpg'),
+      ),
+      ListTile(
+        title: Image.asset('assets/01.jpg'),
+      ),
+    ],
   );
 }
