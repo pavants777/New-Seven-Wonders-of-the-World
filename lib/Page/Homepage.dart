@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:seven_wonders/Page/Screen.dart';
-import '../mocks/mocks_data.dart';
-import '../models/location.dart';
+import '../GVariables/variables.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,13 +10,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final Location china = MockDataChina.FetchAny();
-  final Location jordan = MockDataJordan.FetchAny();
-  final Location brazil = MockDataBrazil.FetchAny();
-  final Location peru = MockDataPeru.FetchAny();
-  final Location mexico = MockDataMexico.FetchAny();
-  final Location italy = MockDataItaly.FetchAny();
-  final Location india = MockDataIndia.FetchAny();
 
   @override
   Widget build(BuildContext context) {
@@ -123,34 +116,58 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: HomeSheet(),
+      body: HomeSheet(context),
     );
   }
 }
 
-Widget HomeSheet() {
+Widget HomeSheet(BuildContext context) {
   return ListView(
     children: <Widget>[
       ListTile(
-        title: Image.asset('assets/01.jpg'),
+        onTap: () {
+          Navigator.push((context),
+              MaterialPageRoute(builder: (context) => Screen(location: china)));
+        },
+        title: Container(
+          constraints: BoxConstraints.tightFor(
+            width: 100.0,
+            height: 200,
+          ),
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/01.jpg',
+              ),
+              Text(
+                'Great Wall of China (China)',
+                softWrap: true,
+              ),
+            ],
+          ),
+        ),
       ),
       ListTile(
-        title: Image.asset('assets/02.jpg'),
+        title: Image.asset(
+          'assets/02.jpg',
+          fit: BoxFit.fitWidth,
+        ),
       ),
       ListTile(
-        title: Image.asset('assets/03.jpg'),
+        title: Image.asset('assets/03.jpg', fit: BoxFit.fitWidth),
       ),
       ListTile(
-        title: Image.asset('assets/04.jpg'),
+        title: Image.asset('assets/04.jpg', fit: BoxFit.fitWidth),
       ),
       ListTile(
-        title: Image.asset('assets/05.jpg'),
+        title: Image.asset('assets/05.jpg', fit: BoxFit.fitWidth),
       ),
       ListTile(
-        title: Image.asset('assets/06.jpg'),
+        title: Image.asset('assets/06.jpg', fit: BoxFit.fitWidth),
       ),
       ListTile(
-        title: Image.asset('assets/07.jpg'),
+        title: Image.asset('assets/07.jpg', fit: BoxFit.fitWidth),
       ),
     ],
   );

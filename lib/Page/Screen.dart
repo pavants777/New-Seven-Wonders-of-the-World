@@ -11,22 +11,18 @@ class Screen extends StatelessWidget {
       appBar: AppBar(
         title: Text(location.name ?? 'Unkown'),
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Container(
-              child: Image.asset(
-                location.url ?? 'assets/01.jpg',
-                fit: BoxFit.contain,
-              ),
+      body: Column(
+        children: [
+          Container(
+            constraints: BoxConstraints.tightFor(height: 300.0),
+            child: Image.asset(
+              location.url ?? 'assets/01.jpg',
             ),
-            Center(
-              child: Column(
-                children: _renders(location),
-              ),
-            ),
-          ],
-        ),
+          ),
+          Column(
+            children: _renders(location),
+          ),
+        ],
       ),
     );
   }
@@ -43,9 +39,22 @@ List<Widget> _renders(Location location) {
 }
 
 Widget _sectiontitle(String? title) {
-  return Text(title ?? 'Unknow');
+  return Container(
+    padding: EdgeInsets.all(10),
+    child: Text(
+      title ?? 'Unknow',
+      textAlign: TextAlign.left,
+      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w900),
+    ),
+  );
 }
 
 Widget _sectiontext(String? text) {
-  return Text(text ?? 'Unknow');
+  return Container(
+      padding: EdgeInsets.all(30),
+      child: Text(
+        text ?? 'Unknow',
+        textAlign: TextAlign.left,
+        style: TextStyle(fontSize: 15),
+      ));
 }
