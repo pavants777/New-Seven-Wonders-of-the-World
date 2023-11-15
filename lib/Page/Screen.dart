@@ -11,9 +11,21 @@ class Screen extends StatelessWidget {
       appBar: AppBar(
         title: Text(location.name ?? 'Unkown'),
       ),
-      body: Center(
+      body: Container(
         child: Column(
-          children: _renders(location),
+          children: [
+            Container(
+              child: Image.asset(
+                location.url ?? 'assets/01.jpg',
+                fit: BoxFit.contain,
+              ),
+            ),
+            Center(
+              child: Column(
+                children: _renders(location),
+              ),
+            ),
+          ],
         ),
       ),
     );

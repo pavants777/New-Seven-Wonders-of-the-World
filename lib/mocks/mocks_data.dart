@@ -5,8 +5,7 @@ class MockDataChina extends Location {
   static Location FetchAny() {
     return Location(
       name: 'Great Wall of China (China)',
-      url:
-          'https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.nationalgeographic.org%2Fimage%2Fupload%2Ft_edhub_resource_key_image%2Fv1638892506%2FEducationHub%2Fphotos%2Fthe-great-wall-of-china.jpg&tbnid=bRwsDQKp8TWzjM&vet=12ahUKEwi0vpygiMSCAxUp3DgGHY52AyEQMygBegQIARBw..i&imgrefurl=https%3A%2F%2Feducation.nationalgeographic.org%2Fresource%2Fgreat-wall-china%2F&docid=QhOGlhzkhAZdZM&w=860&h=580&itg=1&q=the%20great%20wall%20of%20china%20images&ved=2ahUKEwi0vpygiMSCAxUp3DgGHY52AyEQMygBegQIARBw',
+      url: 'assets/01.jpg',
       facts: <LocationFacts>[
         LocationFacts(
           title: 'Summary',
@@ -27,8 +26,7 @@ class MockDataJordan extends Location {
   static Location FetchAny() {
     return Location(
       name: 'Petra (Jordan)',
-      url:
-          'https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.nationalgeographic.org%2Fimage%2Fupload%2Ft_edhub_resource_key_image%2Fv1638892506%2FEducationHub%2Fphotos%2Fthe-great-wall-of-china.jpg&tbnid=bRwsDQKp8TWzjM&vet=12ahUKEwi0vpygiMSCAxUp3DgGHY52AyEQMygBegQIARBw..i&imgrefurl=https%3A%2F%2Feducation.nationalgeographic.org%2Fresource%2Fgreat-wall-china%2F&docid=QhOGlhzkhAZdZM&w=860&h=580&itg=1&q=the%20great%20wall%20of%20china%20images&ved=2ahUKEwi0vpygiMSCAxUp3DgGHY52AyEQMygBegQIARBw',
+      url: 'assets/02.jpg',
       facts: <LocationFacts>[
         LocationFacts(
           title: 'Summary',
@@ -49,7 +47,7 @@ class MockDataBrazil extends Location {
   static Location FetchAny() {
     return Location(
       name: 'Christ the Redeemer (Brazil)',
-      url: '',
+      url: 'assets/03.jpg',
       facts: <LocationFacts>[
         LocationFacts(
           title: 'Summary',
@@ -70,7 +68,7 @@ class MockDataPeru extends Location {
   static Location FetchAny() {
     return Location(
       name: 'Machu Picchu (Peru)',
-      url: '',
+      url: 'assets/04.jpg',
       facts: <LocationFacts>[
         LocationFacts(
           title: 'Summary',
@@ -90,7 +88,7 @@ class MockDataMexico extends Location {
   static Location FetchAny() {
     return Location(
       name: 'Chichen Itza (Mexico)',
-      url: '',
+      url: 'assets/05.jpg',
       facts: <LocationFacts>[
         LocationFacts(
           title: 'Summary',
@@ -110,7 +108,7 @@ class MockDataItaly extends Location {
   static Location FetchAny() {
     return Location(
       name: 'Roman Colosseum (Italy)',
-      url: '',
+      url: 'assets/06.jpg',
       facts: <LocationFacts>[
         LocationFacts(
           title: 'Summary',
@@ -130,7 +128,7 @@ class MockDataIndia extends Location {
   static Location FetchAny() {
     return Location(
       name: 'Taj Mahal (India)',
-      url: '',
+      url: 'assets/07.jpg',
       facts: <LocationFacts>[
         LocationFacts(
           title: 'Summary',
