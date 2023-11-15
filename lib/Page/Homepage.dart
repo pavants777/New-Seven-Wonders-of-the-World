@@ -1,9 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:seven_wonders/Page/Screen.dart';
 import '../GVariables/variables.dart';
+import '../models/location.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -16,159 +18,68 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text('New Seven Wonders of the World'),
+        title: const Text('New Seven Wonders of the World'),
         leading: IconButton(
           onPressed: () {
             setState(() {
               _scaffoldKey.currentState!.openDrawer();
             });
           },
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
         ),
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'New Seven Wonders of the World',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-                softWrap: true,
-              ),
-            ),
-            ListTile(
-              title: Text('Great Wall of China (China)'),
-              onTap: () {
-                Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                        builder: (context) => Screen(location: china)));
-              },
-            ),
-            ListTile(
-              title: Text('Petra (Jordan)'),
-              onTap: () {
-                Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                        builder: (context) => Screen(location: jordan)));
-              },
-            ),
-            ListTile(
-              title: Text('Christ the Redeemer (Brazil)'),
-              onTap: () {
-                Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                        builder: (context) => Screen(location: brazil)));
-              },
-            ),
-            ListTile(
-              title: Text('Machu Picchu (Peru)'),
-              onTap: () {
-                Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                        builder: (context) => Screen(location: peru)));
-              },
-            ),
-            ListTile(
-              title: Text('Chichen Itza (Mexico)'),
-              onTap: () {
-                Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                        builder: (context) => Screen(location: mexico)));
-              },
-            ),
-            ListTile(
-              title: Text('Roman Colosseum (Italy)'),
-              onTap: () {
-                Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                        builder: (context) => Screen(location: italy)));
-              },
-            ),
-            ListTile(
-              title: Text('Taj Mahal (India)'),
-              onTap: () {
-                Navigator.push(
-                    (context),
-                    MaterialPageRoute(
-                        builder: (context) => Screen(location: india)));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
-      body: HomeSheet(context),
+          child: ListView.builder(
+              itemCount: locations.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                    contentPadding: const EdgeInsets.all(20),
+                    leading: _listleading(locations[index]),
+                    title: _listtitle(locations[index], 5.0),
+                    onTap: () {
+                      Navigator.push(
+                          (context),
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Screen(location: locations[index])));
+                    });
+              })),
     );
   }
 }
 
 Widget HomeSheet(BuildContext context) {
-  return ListView(
-    children: <Widget>[
-      ListTile(
+  return ListView.builder(
+    itemCount: locations.length,
+    itemBuilder: (context, index) {
+      return ListTile(
+        contentPadding: const EdgeInsets.all(30),
+        leading: _listleading(locations[index]),
+        title: _listtitle(locations[index], 25.0),
         onTap: () {
-          Navigator.push((context),
-              MaterialPageRoute(builder: (context) => Screen(location: china)));
+          Navigator.push(
+              (context),
+              MaterialPageRoute(
+                  builder: (context) => Screen(location: locations[index])));
         },
-        title: Container(
-          constraints: BoxConstraints.tightFor(
-            width: 100.0,
-            height: 200,
-          ),
-          padding: EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Image.asset(
-                'assets/01.jpg',
-              ),
-              Text(
-                'Great Wall of China (China)',
-                softWrap: true,
-              ),
-            ],
-          ),
-        ),
-      ),
-      ListTile(
-        title: Image.asset(
-          'assets/02.jpg',
-          fit: BoxFit.fitWidth,
-        ),
-      ),
-      ListTile(
-        title: Image.asset('assets/03.jpg', fit: BoxFit.fitWidth),
-      ),
-      ListTile(
-        title: Image.asset('assets/04.jpg', fit: BoxFit.fitWidth),
-      ),
-      ListTile(
-        title: Image.asset('assets/05.jpg', fit: BoxFit.fitWidth),
-      ),
-      ListTile(
-        title: Image.asset('assets/06.jpg', fit: BoxFit.fitWidth),
-      ),
-      ListTile(
-        title: Image.asset('assets/07.jpg', fit: BoxFit.fitWidth),
-      ),
-    ],
+      );
+    },
+  );
+}
+
+Widget _listleading(Location location) {
+  return Container(
+    constraints: const BoxConstraints.tightFor(width: 100.0),
+    child: Image.asset(
+      location.url ?? 'Unkown',
+      fit: BoxFit.fitWidth,
+    ),
+  );
+}
+
+Widget _listtitle(Location location, double? size) {
+  return Text(
+    location.name ?? 'Unknow',
+    style: TextStyle(fontSize: size),
   );
 }

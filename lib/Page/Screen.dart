@@ -11,16 +11,22 @@ class Screen extends StatelessWidget {
       appBar: AppBar(
         title: Text(location.name ?? 'Unkown'),
       ),
-      body: Column(
-        children: [
-          Container(
-            constraints: BoxConstraints.tightFor(height: 300.0),
-            child: Image.asset(
-              location.url ?? 'assets/01.jpg',
+      body: ListView(
+        children: <Widget>[
+          ListTile(
+            title: Column(
+              children: [
+                Container(
+                  constraints: BoxConstraints.tightFor(height: 300.0),
+                  child: Image.asset(
+                    location.url ?? 'assets/01.jpg',
+                  ),
+                ),
+                Column(
+                  children: _renders(location),
+                ),
+              ],
             ),
-          ),
-          Column(
-            children: _renders(location),
           ),
         ],
       ),
