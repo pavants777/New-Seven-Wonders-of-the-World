@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: Drawer(
+          backgroundColor: Colors.white,
           child: ListView.builder(
               itemCount: locations.length,
               itemBuilder: (context, index) {
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                                   Screen(location: locations[index])));
                     });
               })),
+      body: HomeSheet(context),
     );
   }
 }
