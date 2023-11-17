@@ -29,43 +29,46 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: Drawer(
-          backgroundColor: Colors.white,
-          child: ListView.builder(
-              itemCount: locations.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                    contentPadding: const EdgeInsets.all(20),
-                    leading: _listleading(locations[index]),
-                    title: _listtitle(locations[index], 5.0),
-                    onTap: () {
-                      Navigator.push(
-                          (context),
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  Screen(location: locations[index])));
-                    });
-              })),
+          child: Scrollbar(
+        child: ListView.builder(
+            itemCount: locations.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                  contentPadding: const EdgeInsets.all(20),
+                  leading: _listleading(locations[index]),
+                  title: _listtitle(locations[index], 5.0),
+                  onTap: () {
+                    Navigator.push(
+                        (context),
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                Screen(location: locations[index])));
+                  });
+            }),
+      )),
       body: HomeSheet(context),
     );
   }
 }
 
 Widget HomeSheet(BuildContext context) {
-  return ListView.builder(
-    itemCount: locations.length,
-    itemBuilder: (context, index) {
-      return ListTile(
-        contentPadding: const EdgeInsets.all(30),
-        leading: _listleading(locations[index]),
-        title: _listtitle(locations[index], 25.0),
-        onTap: () {
-          Navigator.push(
-              (context),
-              MaterialPageRoute(
-                  builder: (context) => Screen(location: locations[index])));
-        },
-      );
-    },
+  return Scrollbar(
+    child: ListView.builder(
+      itemCount: locations.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          contentPadding: const EdgeInsets.all(30),
+          leading: _listleading(locations[index]),
+          title: _listtitle(locations[index], 25.0),
+          onTap: () {
+            Navigator.push(
+                (context),
+                MaterialPageRoute(
+                    builder: (context) => Screen(location: locations[index])));
+          },
+        );
+      },
+    ),
   );
 }
 
