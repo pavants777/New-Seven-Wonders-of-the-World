@@ -25,5 +25,7 @@ void main() {
     expect(location.url, equals(locationMap['url']));
     expect(location.facts?[0].title, equals(locationMap['facts'][0]['title']));
     expect(location.facts?[0].text, matches(locationMap['facts'][0]['text']));
+
+    expect(location.facts?[0].text, equals(locationMap['fact'][0]['text']));
   });
 }
