@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.purple,
         brightness: Brightness.dark,
+        secondary: Colors.blue,
       )),
       home: HomePage(),
     );
