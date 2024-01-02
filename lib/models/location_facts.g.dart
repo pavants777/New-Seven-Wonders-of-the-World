@@ -6,6 +6,9 @@ part of 'location_facts.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+
+
+
 LocationFacts _$LocationFactsFromJson(Map<String, dynamic> json) =>
     LocationFacts(
       title: json['title'] as String?,
